@@ -1,6 +1,10 @@
 import { ApolloClient, InMemoryCache, makeVar } from '@apollo/client';
+import { LOCALSTORAGE_TOKEN } from './constants';
 
-export const isLoggedInvar = makeVar(false)
+const token = localStorage.getItem(LOCALSTORAGE_TOKEN)
+export const isLoggedInVar = makeVar(Boolean(token))
+export const authTokenVar = makeVar(token)
+
 export const client = new ApolloClient({
     uri: 'https://s-pod-backend.herokuapp.com/graphql',
     cache: new InMemoryCache(),

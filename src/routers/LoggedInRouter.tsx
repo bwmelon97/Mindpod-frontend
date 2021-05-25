@@ -1,8 +1,8 @@
 import React from "react";
-import { isLoggedInvar } from "../apollo";
+import { isLoggedInVar } from "../apollo";
 
 function LoggedInRouter () {
-    const onClick = () => isLoggedInvar(false);
+    const onClick = () => isLoggedInVar(false);
     return (
         <div> 
             <p> Logged in </p> 

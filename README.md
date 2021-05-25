@@ -5,5 +5,5 @@
 - Setting apollo-client                           [O]
 - react-hooks-form -> Create Login Page, Form     [O]
 - login mutation (useMutation)                    [O]
-- Store Login Token (localStorage)                [ ]
+- Store Login Token (localStorage)                [O]
 ```

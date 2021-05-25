@@ -3,6 +3,8 @@ import gql from "graphql-tag";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { loginMutation, loginMutationVariables } from "../__generated__/loginMutation";
+import { LOCALSTORAGE_TOKEN } from "../constants";
+import { authTokenVar, isLoggedInVar } from "../apollo";
 
 
 const LOGIN_MUTATION = gql`
@@ -25,7 +27,12 @@ function LoginPage () {
     const { register, handleSubmit, getValues, formState: { errors } } = useForm<LoginFormInput>();
     
     const onCompleted = ({ login }: loginMutation) => {
-        console.log( login.token )
+        const { ok, token } = login;
+        if (ok && token) {
+            localStorage.setItem(LOCALSTORAGE_TOKEN, token)
+            authTokenVar(token)
+            isLoggedInVar(true)
+        }
     }
     const [
         loginMutation,
