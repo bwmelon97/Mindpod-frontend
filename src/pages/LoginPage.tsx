@@ -1,6 +1,19 @@
 import React from "react";
+import gql from "graphql-tag";
 import { useForm } from "react-hook-form";
+import { useMutation } from "@apollo/client";
+import { loginMutation, loginMutationVariables } from "../__generated__/loginMutation";
 
+
+const LOGIN_MUTATION = gql`
+    mutation loginMutation($loginInput: LoginInput!) {
+        login(input: $loginInput) {
+            ok
+            error
+            token
+        }
+    }
+`
 
 type LoginFormInput = {
     email: string;
@@ -10,7 +23,25 @@ type LoginFormInput = {
 function LoginPage () {
 
     const { register, handleSubmit, getValues, formState: { errors } } = useForm<LoginFormInput>();
-    const onSubmit = () => { console.log(getValues()) }
+    
+    const onCompleted = ({ login }: loginMutation) => {
+        console.log( login.token )
+    }
+    const [
+        loginMutation,
+        { loading, data: LoginMutationResult }
+    ] = useMutation<loginMutation, loginMutationVariables>(LOGIN_MUTATION, { onCompleted });
+    
+    const onSubmit = () => { 
+        if (!loading) {
+            const { email, password } = getValues()
+            loginMutation({
+                variables: {
+                    loginInput: { email, password }
+                }
+            })
+        }
+    }
 
     return (
         <div className='bg-gray-200 flex justify-center h-screen items-center'>
@@ -38,8 +69,9 @@ function LoginPage () {
                     <button
                         className='w-full px-5 py-3 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 text-white focus:outline-none'
                     > 
-                        Login 
+                        { loading ? 'Loading...' : 'Login' } 
                     </button>
+                    { LoginMutationResult?.login.error && <p className='text-red-500'> {LoginMutationResult?.login.error} </p> }
                 </form>
             </div>
         </div>

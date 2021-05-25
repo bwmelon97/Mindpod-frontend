@@ -26,6 +26,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "codegen": "rm -rf src/__generated && apollo client:codegen src/__generated__ --outputFlat --target=typescript",
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
