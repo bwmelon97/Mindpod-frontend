@@ -1,13 +1,13 @@
 import React from "react";
-import { isLoggedInvar } from "../apollo";
+import { Route, Switch } from 'react-router-dom';
+import { CreateAccountPage, LoginPage } from "../pages";
 
 function LoggedOutRouter () {
-    const onClick = () => isLoggedInvar(true);
     return (
-        <div> 
-            <p> Logged out </p>
-            <button onClick={onClick} > Login </button>
-        </div>
+        <Switch>
+            <Route exact path='/' > <CreateAccountPage /> </Route>
+            <Route path='/login' >  <LoginPage /> </Route>
+        </Switch>
     )
 }
 
