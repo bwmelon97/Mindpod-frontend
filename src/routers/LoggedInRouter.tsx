@@ -1,12 +1,17 @@
 import React from "react";
-import { isLoggedInVar } from "../apollo";
+import { authTokenVar, isLoggedInVar } from "../apollo";
+import { LOCALSTORAGE_TOKEN } from "../constants";
 
 function LoggedInRouter () {
-    const onClick = () => isLoggedInVar(false);
+    const logout = () => {
+        localStorage.setItem(LOCALSTORAGE_TOKEN, '')
+        authTokenVar('')
+        isLoggedInVar(false);
+    }
     return (
         <div> 
             <p> Logged in </p> 
-            <button onClick={onClick} > Logout </button>
+            <button onClick={logout} > Logout </button>
         </div>
     )
 }
