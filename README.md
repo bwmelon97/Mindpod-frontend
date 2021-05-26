@@ -1,5 +1,15 @@
 # s-pod-frontend
 
+## Today's Assignment
+```bash
+- Render Create Account Page            [ ]
+- Design Create Account & Login Page    [ ]
+```
+
+---
+
+## 5.24. ~ 25.
+
 ```bash
 - Setting Router                                  [O]
 - Setting apollo-client                           [O]
