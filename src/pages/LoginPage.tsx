@@ -5,6 +5,7 @@ import { useMutation } from "@apollo/client";
 import { loginMutation, loginMutationVariables } from "../__generated__/loginMutation";
 import { LOCALSTORAGE_TOKEN } from "../constants";
 import { authTokenVar, isLoggedInVar } from "../apollo";
+import { Link } from "react-router-dom";
 
 
 const LOGIN_MUTATION = gql`
@@ -54,7 +55,7 @@ function LoginPage () {
         <div className='bg-gray-200 flex justify-center h-screen items-center'>
             <div className='bg-white w-full max-w-xl flex flex-col items-center py-16 px-10 shadow-xl rounded-xl'>
                 <h3 className='mb-10 text-2xl font-light select-none' > Login </h3>
-                <form className='grid gap-6 w-full' onSubmit={handleSubmit(onSubmit)} >
+                <form className='grid gap-6 w-full mb-5' onSubmit={handleSubmit(onSubmit)} >
                     <input 
                         {...register('email', {
                             required: 'Email is required.'
@@ -80,6 +81,10 @@ function LoginPage () {
                     </button>
                     { LoginMutationResult?.login.error && <p className='text-red-500'> {LoginMutationResult?.login.error} </p> }
                 </form>
+                <div>
+                    <span> New to Mindpod? </span> 
+                    <Link to='/' className='text-purple-600 hover:underline' > Create Account </Link>
+                </div>
             </div>
         </div>
     )
