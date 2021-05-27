@@ -2,7 +2,7 @@
 
 ## Today's Assignment
 ```bash
-- Render Create Account Page            [ ]
+- Render Create Account Page            [O]
 - Design Create Account & Login Page    [ ]
 ```
 
