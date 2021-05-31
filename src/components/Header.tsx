@@ -1,5 +1,5 @@
 import React from "react";
-import gql from "graphql-tag";
+// import gql from "graphql-tag";
 import { authTokenVar, isLoggedInVar } from "@apollo-client";
 import { LOCALSTORAGE_TOKEN } from "@constants";
 
