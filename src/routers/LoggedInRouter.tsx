@@ -1,6 +1,8 @@
 import React from "react";
+import { Route, Switch } from "react-router";
 import { authTokenVar, isLoggedInVar } from "../apollo";
 import { LOCALSTORAGE_TOKEN } from "../constants";
+import { MainPage } from "@pages/client";
 
 function LoggedInRouter () {
     const logout = () => {
@@ -9,10 +11,9 @@ function LoggedInRouter () {
         isLoggedInVar(false);
     }
     return (
-        <div> 
-            <p> Logged in </p> 
-            <button onClick={logout} > Logout </button>
-        </div>
+        <Switch>
+            <Route path='/main'> <MainPage /> </Route>
+        </Switch>
     )
 }
 

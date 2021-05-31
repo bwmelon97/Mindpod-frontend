@@ -5,7 +5,7 @@ import { useMutation } from "@apollo/client";
 import { loginMutation, loginMutationVariables } from "../__generated__/loginMutation";
 import { LOCALSTORAGE_TOKEN } from "../constants";
 import { authTokenVar, isLoggedInVar } from "../apollo";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { BaseInput } from "../components/FormComponents";
 
 
@@ -26,6 +26,7 @@ type LoginFormInput = {
 
 function LoginPage () {
 
+    const history = useHistory();
     const { register, handleSubmit, getValues, formState: { errors } } = useForm<LoginFormInput>();
     
     const onCompleted = ({ login }: loginMutation) => {
@@ -34,6 +35,7 @@ function LoginPage () {
             localStorage.setItem(LOCALSTORAGE_TOKEN, token)
             authTokenVar(token)
             isLoggedInVar(true)
+            history.push('/main')
         }
     }
     const [
