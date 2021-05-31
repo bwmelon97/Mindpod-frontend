@@ -7,11 +7,6 @@
 // GraphQL query operation: GetPodcasts
 // ====================================================
 
-export interface GetPodcasts_getAllPodcasts_podcasts_host {
-  __typename: "User";
-  email: string;
-}
-
 export interface GetPodcasts_getAllPodcasts_podcasts {
   __typename: "Podcast";
   id: number;
@@ -19,7 +14,6 @@ export interface GetPodcasts_getAllPodcasts_podcasts {
   title: string;
   category: string;
   description: string;
-  host: GetPodcasts_getAllPodcasts_podcasts_host;
 }
 
 export interface GetPodcasts_getAllPodcasts {
