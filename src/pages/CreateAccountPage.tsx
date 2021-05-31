@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { UserRole } from "../__generated__/globalTypes";
 import { CreateAccount, CreateAccountVariables } from "../__generated__/CreateAccount";
+import { BaseInput } from "../components/FormComponents";
 
 
 const CREATE_ACCOUNT_MUTATION = gql`
@@ -54,20 +55,18 @@ function CreateAccountPage () {
             <div className='bg-white w-full max-w-xl flex flex-col items-center py-16 px-10 shadow-xl rounded-xl'>
                 <h3 className='mb-10 text-2xl font-light select-none' > Create Account </h3>
                 <form className='grid gap-6 w-full mb-5' onSubmit={handleSubmit(onSubmit)} >
-                    <input 
+                    <BaseInput 
                         {...register('email', {
                             required: 'Email is required.'
                         })}
                         type='email'
-                        className='w-full px-5 py-3 rounded-md ring-2 ring-gray-200 focus:ring-2 focus:ring-indigo-400 focus:outline-none'
                         placeholder='Email'
                     />
-                    <input 
+                    <BaseInput 
                         {...register('password', {
                             required: 'Password is required.'
                         })}
                         type='password'
-                        className='w-full px-5 py-3 rounded-md ring-2 ring-gray-200 focus:ring-2 focus:ring-indigo-400 focus:outline-none'
                         placeholder='Password'
                     />
                     <select
