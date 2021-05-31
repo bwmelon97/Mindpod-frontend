@@ -1,19 +1,16 @@
 import React from "react";
 import { Route, Switch } from "react-router";
-import { authTokenVar, isLoggedInVar } from "../apollo";
-import { LOCALSTORAGE_TOKEN } from "../constants";
 import { MainPage } from "@pages/client";
+import Header from "@components/Header";
 
 function LoggedInRouter () {
-    const logout = () => {
-        localStorage.setItem(LOCALSTORAGE_TOKEN, '')
-        authTokenVar('')
-        isLoggedInVar(false);
-    }
     return (
-        <Switch>
-            <Route path='/main'> <MainPage /> </Route>
-        </Switch>
+        <div className='bg-gray-100 min-h-screen' >
+            <Header />
+            <Switch>
+                <Route path='/main'> <MainPage /> </Route>
+            </Switch>
+        </div>
     )
 }
 
