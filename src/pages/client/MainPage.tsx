@@ -1,6 +1,8 @@
-import { useQuery } from "@apollo/client";
-import gql from "graphql-tag";
 import React from "react";
+import { useQuery } from "@apollo/client";
+import { GetPodcasts } from "@gql-types/GetPodcasts";
+import gql from "graphql-tag";
+import { Link } from "react-router-dom";
 
 const GET_PODCASTS = gql`
     query GetPodcasts {
@@ -13,9 +15,6 @@ const GET_PODCASTS = gql`
                 title
                 category
                 description
-                host {
-                    email
-                }
             }
         }
     }
@@ -23,9 +22,9 @@ const GET_PODCASTS = gql`
 
 
 function MainPage () {
-    const { loading, data } = useQuery(GET_PODCASTS)
+    const { loading, data } = useQuery<GetPodcasts>(GET_PODCASTS)
 
-    if (!data && loading) {
+    if (!data || loading) {
         return (
             <div className='flex justify-center items-center'>
                 loading...
@@ -33,11 +32,21 @@ function MainPage () {
         )
     }
 
-    console.log(data)
+    const { 
+        getAllPodcasts: { podcasts } 
+    } = data;
 
     return (
-        <div>
-            Main
+        <div className='w-full' >
+            { podcasts?.map( (pc, idx) => (
+                <div key={idx} className='bg-white my-1 py-4 px-4' >
+                    <Link to={`/podcast/${pc.id}`}> { pc.title } </Link>
+                    <p
+                        className='break-words'                    
+                    > { pc.description } </p>
+
+                </div>
+            )) }
         </div>
     )
 }
