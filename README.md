@@ -20,6 +20,7 @@ Codesandbox에서 제대로 실행되지 않는군요... Github 코드 링크를
  * Detail 페이지 디자인                               -> 기초 디자인 완료
  * Detail 페이지에 댓글창 추가
  * Detail Podcast 전체 Rating UI 넣기
+ * 시간 표기 변경하기 (패키지 찾아보자 !)
 
 ---
 
