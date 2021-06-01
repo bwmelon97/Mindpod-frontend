@@ -24,7 +24,7 @@ const GET_PODCAST_DETAIL = gql`
                     title
                     createdAt
                     rating
-                    # audioFileLink
+                    audioFileLink
                     category
                 }
             }
@@ -88,34 +88,21 @@ function PodcastDetailPage () {
                 <h2 className='border-b border-gray-300 text-2xl pb-4'> Episodes </h2>
                 {/* Episode 개수 나타내기 */}
 
-                <div className='border-b border-gray-300 py-4'>
-                    <h5 className='text-sm text-gray-500 mb-2'> 6시간 전 </h5>
-                    <h3 className='text-xl mb-3'> 에피소드 제목입니다. 안녕하세요 </h3>
-                    <div className='flex items-center'>
-                        <button 
-                            className='border border-gray-300 mr-5 py-1 px-4 rounded-full text-sm' 
-                        > 
-                            Play 34:06 
-                        </button>
-                        <div> O O O O O </div>
-                        <div className='ml-5'> 좋아요 </div>
+                {podcast?.episodes.map(ep => (
+                    <div className='border-b border-gray-300 py-4'>
+                        <h5 className='text-sm text-gray-500 mb-2'> {ep.createdAt} </h5>
+                        <h3 className='text-xl mb-3'> {ep.title} </h3>
+                        <div className='flex items-center'>
+                            <button 
+                                className='border border-gray-300 mr-5 py-1 px-4 rounded-full text-sm' 
+                            > 
+                                Play 34:06 
+                            </button>
+                            <div> O O O O O </div>
+                            <div className='ml-5'> 좋아요 </div>
+                        </div>
                     </div>
-                </div>
-
-                <div className='border-b border-gray-300 py-4'>
-                    <h5 className='text-sm text-gray-500 mb-2'> 6시간 전 </h5>
-                    <h3 className='text-xl mb-3'> 에피소드 제목입니다. 안녕하세요 </h3>
-                    <div className='flex items-center'>
-                        <button 
-                            className='border border-gray-300 mr-5 py-1 px-4 rounded-full text-sm' 
-                        > 
-                            Play 34:06 
-                        </button>
-                        <div> O O O O O </div>
-                        <div className='ml-5'> 좋아요 </div>
-                    </div>
-                </div>
-
+                ))}
             </div>
         </div>
     )
