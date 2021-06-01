@@ -58,7 +58,7 @@ function PodcastDetailPage () {
     } = data;
 
     return (
-        <div className='h-screen bg-white'>
+        <div className='h-screen bg-white pt-12'>
             <div className='px-4 py-6 bg-gray-100'>
                 <div className='flex justify-between'>
                     <div className='flex items-center'>

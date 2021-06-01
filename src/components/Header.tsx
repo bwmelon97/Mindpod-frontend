@@ -21,10 +21,10 @@ function Header () {
     }
 
     return (
-        <div className='bg-white w-full py-3 px-4 flex items-center justify-between' >
+        <div className='bg-white w-full py-3 px-4 flex items-center justify-between fixed top-0' >
             <div className='flex items-center'>
                 <img src={LOGO_IMG_URL} className='w-5' />
-                <span className='font-extrabold tracking-tighter' > Mindpod </span>
+                <span className='font-extrabold tracking-tighter select-none' > Mindpod </span>
             </div>
             <div>
                 <button onClick={logout} >Logout</button>

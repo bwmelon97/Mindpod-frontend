@@ -37,7 +37,7 @@ function MainPage () {
     } = data;
 
     return (
-        <div className='w-full' >
+        <div className='w-full pt-12' >
             { podcasts?.map( (pc, idx) => (
                 <div key={idx} className='bg-white my-1 py-4 px-4 flex flex-col' >
                     <div className='flex justify-between'>
