@@ -13,7 +13,6 @@ Codesandbox에서 제대로 실행되지 않는군요... Github 코드 링크를
     - 팟캐스트의 세부 에피소드들을 보여주시면 됩니다.
 
 ### 해야할 것
- * Header 컴포넌트 상단에 고정할 것 (position fixed)
  * Header 에 좌측은 로고, 우측 유저는 아이콘으로 대체 (혹은 프로필 이미지)
  * Main Page 팟캐스트 아이템 스타일링 (디자인 우선)     -> 기초 디자인 완료
  * Main Page 하단에 Footer 컴포넌트 제작
