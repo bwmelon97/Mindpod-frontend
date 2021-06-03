@@ -49,7 +49,7 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "test-cov": "npm test -- --coverage --watchAll=false",
+    "test:cov": "npm test -- --coverage --watchAll=false",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
