@@ -14,11 +14,11 @@ import { LOCALSTORAGE_TOKEN, LOGO_IMG_URL } from "@constants";
 // `
 
 function Header () {
-    const logout = () => {
-        localStorage.setItem(LOCALSTORAGE_TOKEN, '')
-        authTokenVar('')
-        isLoggedInVar(false);
-    }
+    // const logout = () => {
+    //     localStorage.setItem(LOCALSTORAGE_TOKEN, '')
+    //     authTokenVar('')
+    //     isLoggedInVar(false);
+    // }
 
     return (
         <div className='bg-white w-full py-3 px-4 flex items-center justify-between fixed top-0' >
@@ -27,8 +27,8 @@ function Header () {
                 <span className='font-extrabold tracking-tighter select-none' > Mindpod </span>
             </div>
             <div>
-                <button onClick={logout} >Logout</button>
-                {/* User */}
+                {/* <button onClick={logout} >Logout</button> */}
+                User
                 
             </div>
         </div>
