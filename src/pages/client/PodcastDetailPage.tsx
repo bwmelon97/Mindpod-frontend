@@ -5,7 +5,7 @@ import { useQuery } from "@apollo/client";
 import { GetPodcastDetail, GetPodcastDetailVariables } from "@gql-types/GetPodcastDetail";
 
 
-const GET_PODCAST_DETAIL = gql`
+export const GET_PODCAST_DETAIL = gql`
     query GetPodcastDetail ($id: Float!) {
         getPodcast(id: $id) {
             ok
@@ -43,10 +43,6 @@ function PodcastDetailPage () {
         GetPodcastDetailVariables
     >(GET_PODCAST_DETAIL, { variables: { id: +id } }) 
 
-    if (error) {
-        console.log(error)
-        return <div> {error.message} </div>
-    }
     if (!data || loading) {
         return <div> loading... </div>
     }
@@ -88,8 +84,8 @@ function PodcastDetailPage () {
                 <h2 className='border-b border-gray-300 text-2xl pb-4'> Episodes </h2>
                 {/* Episode 개수 나타내기 */}
 
-                {podcast?.episodes.map(ep => (
-                    <div className='border-b border-gray-300 py-4'>
+                {podcast?.episodes.map((ep, idx) => (
+                    <div key={idx} className='border-b border-gray-300 py-4'>
                         <h5 className='text-sm text-gray-500 mb-2'> {ep.createdAt} </h5>
                         <h3 className='text-xl mb-3'> {ep.title} </h3>
                         <div className='flex items-center'>
