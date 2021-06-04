@@ -6,9 +6,10 @@ import { useMutation } from "@apollo/client";
 import { UserRole } from "../__generated__/globalTypes";
 import { CreateAccount, CreateAccountVariables } from "../__generated__/CreateAccount";
 import { BaseInput } from "../components/FormComponents";
+import { EMAIL_PATTERN } from "@constants";
 
 
-const CREATE_ACCOUNT_MUTATION = gql`
+export const CREATE_ACCOUNT_MUTATION = gql`
     mutation CreateAccount( $createAccountInput: CreateAccountInput! ) {
         createAccount(input: $createAccountInput) {
             ok
@@ -25,7 +26,12 @@ type CreateAccountFormInput = {
 
 function CreateAccountPage () {
 
-    const { register, handleSubmit, getValues, formState: { errors } } = useForm<CreateAccountFormInput>();
+    const { register, handleSubmit, getValues, formState: { errors } } = useForm<CreateAccountFormInput>({
+        mode: 'onChange',
+        defaultValues: {
+            role: UserRole.Listener
+        }
+    });
 
     const onCompleted = ({ createAccount }: CreateAccount) => {
         const { ok } = createAccount;
@@ -57,7 +63,8 @@ function CreateAccountPage () {
                 <form className='grid gap-6 w-full mb-5' onSubmit={handleSubmit(onSubmit)} >
                     <BaseInput 
                         {...register('email', {
-                            required: 'Email is required.'
+                            required: 'Email is required.',
+                            pattern: EMAIL_PATTERN
                         })}
                         type='email'
                         placeholder='Email'
@@ -83,15 +90,15 @@ function CreateAccountPage () {
                             )
                         }) }
                     </select>
-                    { errors.email?.message && <p className='text-red-500'> {errors.email.message} </p> }
-                    { errors.password?.message && <p className='text-red-500'> {errors.password.message} </p> }
-                    { errors.role?.message && <p className='text-red-500'> {errors.role.message} </p> }
-                    { createAccountData?.createAccount.error && <p className='text-red-500'> {createAccountData?.createAccount.error} </p> }
+                    { errors.email?.message && <p className='text-red-500' role='alert'> {errors.email.message} </p> }
+                    { errors.email?.type === 'pattern' && <p className='text-red-500' role='alert' > Invaild Email Pattern </p> }
+                    { errors.password?.message && <p className='text-red-500' role='alert'> {errors.password.message} </p> }
                     <button
                         className='w-full px-5 py-3 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 text-white focus:outline-none'
                     > 
                         { loading ? 'Loading...' : 'Create Account' } 
                     </button>
+                    { createAccountData?.createAccount.error && <p className='text-red-500' role='alert'> {createAccountData?.createAccount.error} </p> }
                 </form>
                 <div>
                     <span> Do you have account? </span> 
