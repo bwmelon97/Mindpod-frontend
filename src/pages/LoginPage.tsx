@@ -3,13 +3,13 @@ import gql from "graphql-tag";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { loginMutation, loginMutationVariables } from "../__generated__/loginMutation";
-import { LOCALSTORAGE_TOKEN } from "../constants";
+import { EMAIL_PATTERN, LOCALSTORAGE_TOKEN } from "../constants";
 import { authTokenVar, isLoggedInVar } from "../apollo";
 import { Link, useHistory } from "react-router-dom";
 import { BaseInput } from "../components/FormComponents";
 
 
-const LOGIN_MUTATION = gql`
+export const LOGIN_MUTATION = gql`
     mutation loginMutation($loginInput: LoginInput!) {
         login(input: $loginInput) {
             ok
@@ -27,7 +27,9 @@ type LoginFormInput = {
 function LoginPage () {
 
     const history = useHistory();
-    const { register, handleSubmit, getValues, formState: { errors } } = useForm<LoginFormInput>();
+    const { register, handleSubmit, getValues, formState: { errors } } = useForm<LoginFormInput>({
+        mode: "onChange"
+    });
     
     const onCompleted = ({ login }: loginMutation) => {
         const { ok, token } = login;
@@ -61,7 +63,8 @@ function LoginPage () {
                 <form className='grid gap-6 w-full mb-5' onSubmit={handleSubmit(onSubmit)} >
                     <BaseInput 
                         {...register('email', {
-                            required: 'Email is required.'
+                            required: 'Email is required.',
+                            pattern: EMAIL_PATTERN
                         })}
                         type='email'
                         placeholder='Email'
@@ -73,14 +76,16 @@ function LoginPage () {
                         type='password'
                         placeholder='Password'
                     />
-                    { errors.email?.message && <p className='text-red-500'> {errors.email.message} </p> }
-                    { errors.password?.message && <p className='text-red-500'> {errors.password.message} </p> }
+                    { errors.email?.message && <p className='text-red-500' role='alert' > {errors.email.message} </p> }
+                    { errors.email?.type === 'pattern' && <p className='text-red-500' role='alert' > Invaild Email Pattern </p> }
+                    { errors.password?.message && <p className='text-red-500' role='alert'> {errors.password.message} </p> }
                     <button
                         className='w-full px-5 py-3 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600 text-white focus:outline-none'
+                        role='button'
                     > 
                         { loading ? 'Loading...' : 'Login' } 
                     </button>
-                    { LoginMutationResult?.login.error && <p className='text-red-500'> {LoginMutationResult?.login.error} </p> }
+                    { LoginMutationResult?.login.error && <p className='text-red-500' role='alert'> {LoginMutationResult?.login.error} </p> }
                 </form>
                 <div>
                     <span> New to Mindpod? </span> 
