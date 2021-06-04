@@ -4,7 +4,7 @@ import { GetPodcasts } from "@gql-types/GetPodcasts";
 import gql from "graphql-tag";
 import { Link } from "react-router-dom";
 
-const GET_PODCASTS = gql`
+export const GET_PODCASTS = gql`
     query GetPodcasts {
         getAllPodcasts {
             ok
