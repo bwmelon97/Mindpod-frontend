@@ -3,10 +3,11 @@ import gql from "graphql-tag";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { UserRole } from "../__generated__/globalTypes";
-import { CreateAccount, CreateAccountVariables } from "../__generated__/CreateAccount";
-import { BaseInput } from "../components/FormComponents";
+import { UserRole } from "@gql-types/globalTypes";
+import { CreateAccount, CreateAccountVariables } from "@gql-types/CreateAccount";
+import { BaseInput } from "@components/FormComponents";
 import { EMAIL_PATTERN } from "@constants";
+import Logo from "@components/Logo";
 
 
 export const CREATE_ACCOUNT_MUTATION = gql`
@@ -57,9 +58,13 @@ function CreateAccountPage () {
     }
 
     return (
-        <div className='bg-gray-200 flex justify-center h-screen items-center'>
-            <div className='bg-white w-full max-w-xl flex flex-col items-center py-16 px-10 shadow-xl rounded-xl'>
-                <h3 className='mb-10 text-2xl font-light select-none' > Create Account </h3>
+        <div className='flex justify-center h-screen'>
+            <div className='bg-white w-full max-w-xl flex flex-col items-center pt-10 px-10 lg:pt-20'>
+                <Logo size='xl' />
+                <h3 className='mt-4 text-xl' > 명상의 순간을 함께해요 </h3>
+
+
+                <h3 className='mb-10 text-2xl font-light select-none' > </h3>
                 <form className='grid gap-6 w-full mb-5' onSubmit={handleSubmit(onSubmit)} >
                     <BaseInput 
                         {...register('email', {

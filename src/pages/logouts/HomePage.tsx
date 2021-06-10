@@ -1,14 +1,14 @@
 import React from "react";
 import gql from "graphql-tag";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { CreateAccount, CreateAccountVariables } from "../__generated__/CreateAccount";
-import { BaseInput } from "../components/FormComponents";
+import { BaseInput } from "@components/FormComponents";
 import { EMAIL_PATTERN } from "@constants";
 import Logo from "@components/Logo";
 import { CheckEmail, CheckEmailVariables } from "@gql-types/CheckEmail";
 import Button from "@components/Button";
+import { createAccountDataVar, pathVaildationVar } from ".";
 
 
 export const CREATE_ACCOUNT_MUTATION = gql`
@@ -26,6 +26,7 @@ type EmailInput = {
 
 function HomePage () {
 
+    const history = useHistory();    
     const { register, handleSubmit, getValues, formState: { errors, isValid, touchedFields } } = useForm<EmailInput>({
         mode: 'onChange',
     });
@@ -33,7 +34,15 @@ function HomePage () {
     const onCompleted = ({ checkEmail }: CheckEmail) => {
         const { ok } = checkEmail;
         if ( ok ) {
-            console.log('Success to Create Account')
+            createAccountDataVar({
+                ...createAccountDataVar(),
+                email: getValues('email')
+            })
+            pathVaildationVar({
+                isCheckedEmail: true,
+                isCheckedDetail: false
+            })
+            history.push('/create-account')
         }
     }
     const [ 

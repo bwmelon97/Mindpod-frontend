@@ -2,11 +2,11 @@ import React from "react";
 import gql from "graphql-tag";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
-import { loginMutation, loginMutationVariables } from "../__generated__/loginMutation";
-import { EMAIL_PATTERN, LOCALSTORAGE_TOKEN } from "../constants";
-import { authTokenVar, isLoggedInVar } from "../apollo";
+import { loginMutation, loginMutationVariables } from "@gql-types/loginMutation";
+import { EMAIL_PATTERN, LOCALSTORAGE_TOKEN } from "@constants";
+import { authTokenVar, isLoggedInVar } from "@apollo-client";
 import { Link, useHistory } from "react-router-dom";
-import { BaseInput } from "../components/FormComponents";
+import { BaseInput } from "@components/FormComponents";
 
 
 export const LOGIN_MUTATION = gql`

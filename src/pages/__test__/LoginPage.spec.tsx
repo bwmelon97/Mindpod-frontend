@@ -1,6 +1,6 @@
 import { ApolloProvider } from "@apollo/client"
 import { LoginPage } from "@pages"
-import { LOGIN_MUTATION } from "@pages/LoginPage"
+import { LOGIN_MUTATION } from "@pages/logouts/LoginPage"
 import { render, RenderResult, waitFor } from "@testing-library/react"
 import userEvent from "@testing-library/user-event";
 import { createMockClient, MockApolloClient } from 'mock-apollo-client';
