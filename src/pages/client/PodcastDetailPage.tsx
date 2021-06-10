@@ -7,18 +7,20 @@ import { GetPodcastDetail, GetPodcastDetailVariables } from "@gql-types/GetPodca
 
 export const GET_PODCAST_DETAIL = gql`
     query GetPodcastDetail ($id: Float!) {
-        getPodcast(id: $id) {
+        getPodcastForListener(id: $id) {
             ok
             error
             podcast {
                 createdAt
                 title
-                category
+                hashTags {
+                    name
+                }
                 rating
                 description
-                # host {
-                #     email
-                # }
+                host {
+                    email
+                }
                 episodes {
                     id
                     title

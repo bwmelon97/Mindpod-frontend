@@ -5,15 +5,17 @@ import gql from "graphql-tag";
 import { Link } from "react-router-dom";
 
 export const GET_PODCASTS = gql`
-    query GetPodcasts {
-        getAllPodcasts {
+    query GetPodcasts( $input: GetPodcastsInput! ) {
+        getAllPodcasts( input: $input ) {
             ok
             error
             podcasts {
                 id
                 updatedAt
                 title
-                category
+                host {
+                    profileImg
+                }
                 description
             }
         }
