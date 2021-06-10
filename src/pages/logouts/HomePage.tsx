@@ -1,14 +1,15 @@
 import React from "react";
 import gql from "graphql-tag";
 import { useForm } from "react-hook-form";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { BaseInput } from "@components/FormComponents";
+import { BaseInput, FormContainer, LogoutPageWrapper } from "@components/FormComponents";
 import { EMAIL_PATTERN } from "@constants";
 import Logo from "@components/Logo";
 import { CheckEmail, CheckEmailVariables } from "@gql-types/CheckEmail";
 import Button from "@components/Button";
 import { createAccountDataVar, pathVaildationVar } from ".";
+import StyledLink from "@components/StyledLink";
 
 
 export const CREATE_ACCOUNT_MUTATION = gql`
@@ -63,8 +64,8 @@ function HomePage () {
     }
 
     return (
-        <div className='flex justify-center h-screen'>
-            <div className='bg-white w-full max-w-xl flex flex-col items-center pt-10 px-5 lg:pt-20'>
+        <LogoutPageWrapper>
+            <FormContainer>
                 <Logo size='xl' />
                 <h3 className='mt-4 text-xl' > 명상의 순간을 함께해요 </h3>
 
@@ -89,10 +90,10 @@ function HomePage () {
                 </form>
                 <div>
                     <span> Do you have account? </span> 
-                    <Link to='/login' className='text-lime-700 hover:underline' > Login </Link>
+                    <StyledLink to='/login' linkText='Login' />
                 </div>
-            </div>
-        </div>
+            </FormContainer>
+        </LogoutPageWrapper>
     )
 }
 
