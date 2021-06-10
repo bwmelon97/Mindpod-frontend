@@ -8,8 +8,8 @@ function LoggedInRouter () {
         <div className='bg-gray-100 min-h-screen' >
             <Header />
             <Switch>
-                <Route path='/main'> <MainPage /> </Route>
-                <Route path='/podcast/:id'> <PodcastDetail /> </Route>
+                <Route path='/l/main'> <MainPage /> </Route>
+                <Route path='/l/podcast/:id'> <PodcastDetail /> </Route>
                 <Redirect to='/main' />
             </Switch>
         </div>
