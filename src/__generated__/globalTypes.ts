@@ -12,10 +12,19 @@ export enum UserRole {
   Listener = "Listener",
 }
 
+export interface CheckEmailInput {
+  email: string;
+}
+
 export interface CreateAccountInput {
   email: string;
   password: string;
   role: UserRole;
+  profileImg?: string | null;
+}
+
+export interface GetPodcastsInput {
+  page?: number | null;
 }
 
 export interface LoginInput {
