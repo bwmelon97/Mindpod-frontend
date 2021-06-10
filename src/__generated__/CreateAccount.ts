@@ -13,6 +13,7 @@ export interface CreateAccount_createAccount {
   __typename: "LoginOutput";
   ok: boolean;
   error: string | null;
+  token: string | null;
 }
 
 export interface CreateAccount {

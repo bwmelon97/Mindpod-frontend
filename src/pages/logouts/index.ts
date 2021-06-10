@@ -11,7 +11,7 @@ type CreateAccountData = {
 const defaultValue: CreateAccountData = {
     email: '',
     password: '',
-    role: UserRole.Listener,
+    role: UserRole.Host,
     promileImg: ''
 }
 
