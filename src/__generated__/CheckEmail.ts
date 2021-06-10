@@ -13,6 +13,7 @@ export interface CheckEmail_checkEmail {
   __typename: "CheckEmailOutput";
   ok: boolean;
   error: string | null;
+  isNewEmail: boolean | null;
 }
 
 export interface CheckEmail {

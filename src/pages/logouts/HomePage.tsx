@@ -17,6 +17,7 @@ export const CREATE_ACCOUNT_MUTATION = gql`
         checkEmail(input: $checkEmailInput) {
             ok
             error
+            isNewEmail
         }
     }
 `;
@@ -33,8 +34,8 @@ function HomePage () {
     });
 
     const onCompleted = ({ checkEmail }: CheckEmail) => {
-        const { ok } = checkEmail;
-        if ( ok ) {
+        const { ok, isNewEmail } = checkEmail;
+        if ( ok && isNewEmail ) {
             createAccountDataVar({
                 ...createAccountDataVar(),
                 email: getValues('email')
@@ -85,6 +86,7 @@ function HomePage () {
                     { touchedFields.email && errors.email?.type === 'pattern' && <p className='text-red-500' role='alert' > Invaild Email Pattern </p> }
                     { errors.email?.type === 'required' && <p className='text-red-500' role='alert'> {errors.email.message} </p> }
                     { checkEmailResult?.checkEmail.error && <p className='text-red-500' role='alert'> {checkEmailResult?.checkEmail.error} </p> }
+                    { checkEmailResult?.checkEmail.isNewEmail === false && <p className='text-red-500' role='alert'> User with that email has already existed. </p> }
                     
                     <Button isVaild={isValid} isLoading={loading} actionText='Next' />
                 </form>
