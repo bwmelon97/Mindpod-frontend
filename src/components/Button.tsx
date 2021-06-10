@@ -12,7 +12,7 @@ const Button: React.FC<ButtonProps> = ({ isVaild, actionText, isLoading }) => {
         <button className={`w-full px-5 py-3 text-white focus:outline-none transition-colors duration-300 ${ 
             isVaild ?    
             `bg-lime-700 hover:bg-lime-800 ${isLoading ? 'bg-opacity-80 hover:bg-opacity-80' : ''}` :
-            'bg-gray-200 pointer-events-none'
+            'bg-gray-300 pointer-events-none'
         }`} >
             { isLoading ? 'Loading...' : actionText }
         </button>
