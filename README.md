@@ -13,9 +13,9 @@ Codesandbox에서 제대로 실행되지 않는군요... Github 코드 링크를
     - 팟캐스트의 세부 에피소드들을 보여주시면 됩니다.
 
 ### 해야할 것
- * Create Account 및 Login Page UI 수정
- * Create Account는 이메일 확인 / 정보 입력 / 프사 업로드로 3 Step
- * Create Account 시, 바로 로그인하도록
+ * FormErrorBox 구현 (Error는 하나만 나타나도록)
+ * 다음 단계로 넘어가거나 Home <-> Login 간의 이동 시, 상하 길이 부드럽게 변경 (애니메이션)
+ * Create Account는 이메일 확인 / 정보 입력 / 프사 업로드로 3 Step ( 3단계만 남음 )
  
  * Header 에 좌측은 로고, 우측 유저는 아이콘으로 대체 (혹은 프로필 이미지)
  * Main Page 팟캐스트 아이템 스타일링 (디자인 우선)     -> 기초 디자인 완료

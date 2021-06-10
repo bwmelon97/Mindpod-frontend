@@ -27,3 +27,6 @@ export const FormContainer: React.FC = ({ children }) => (
         {children}
     </div>
 )
+
+// export const FormErrorBox: React.FC = () => {
+// }
