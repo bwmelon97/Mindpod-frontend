@@ -7,12 +7,17 @@
 // GraphQL query operation: GetPodcastDetail
 // ====================================================
 
-export interface GetPodcastDetail_getPodcast_podcast_host {
+export interface GetPodcastDetail_getPodcastForListener_podcast_hashTags {
+  __typename: "HashTag";
+  name: string;
+}
+
+export interface GetPodcastDetail_getPodcastForListener_podcast_host {
   __typename: "User";
   email: string;
 }
 
-export interface GetPodcastDetail_getPodcast_podcast_episodes {
+export interface GetPodcastDetail_getPodcastForListener_podcast_episodes {
   __typename: "Episode";
   id: number;
   title: string;
@@ -22,26 +27,26 @@ export interface GetPodcastDetail_getPodcast_podcast_episodes {
   category: string;
 }
 
-export interface GetPodcastDetail_getPodcast_podcast {
+export interface GetPodcastDetail_getPodcastForListener_podcast {
   __typename: "Podcast";
   createdAt: any;
   title: string;
-  category: string;
-  rating: number;
+  hashTags: GetPodcastDetail_getPodcastForListener_podcast_hashTags[];
+  rating: number[];
   description: string;
-  host: GetPodcastDetail_getPodcast_podcast_host;
-  episodes: GetPodcastDetail_getPodcast_podcast_episodes[];
+  host: GetPodcastDetail_getPodcastForListener_podcast_host;
+  episodes: GetPodcastDetail_getPodcastForListener_podcast_episodes[];
 }
 
-export interface GetPodcastDetail_getPodcast {
+export interface GetPodcastDetail_getPodcastForListener {
   __typename: "PodcastOutput";
   ok: boolean;
   error: string | null;
-  podcast: GetPodcastDetail_getPodcast_podcast | null;
+  podcast: GetPodcastDetail_getPodcastForListener_podcast | null;
 }
 
 export interface GetPodcastDetail {
-  getPodcast: GetPodcastDetail_getPodcast;
+  getPodcastForListener: GetPodcastDetail_getPodcastForListener;
 }
 
 export interface GetPodcastDetailVariables {

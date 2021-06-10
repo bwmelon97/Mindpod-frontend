@@ -50,7 +50,7 @@ function PodcastDetailPage () {
     }
 
     const {
-        getPodcast: { 
+        getPodcastForListener: { 
             podcast
         }
     } = data;
