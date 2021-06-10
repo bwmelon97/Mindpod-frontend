@@ -13,14 +13,28 @@ Codesandbox에서 제대로 실행되지 않는군요... Github 코드 링크를
     - 팟캐스트의 세부 에피소드들을 보여주시면 됩니다.
 
 ### 해야할 것
+ * Create Account 및 Login Page UI 수정
+ * Create Account는 이메일 확인 / 정보 입력 / 프사 업로드로 3 Step
+ * Create Account 시, 바로 로그인하도록
+ 
  * Header 에 좌측은 로고, 우측 유저는 아이콘으로 대체 (혹은 프로필 이미지)
  * Main Page 팟캐스트 아이템 스타일링 (디자인 우선)     -> 기초 디자인 완료
  * Main Page 하단에 Footer 컴포넌트 제작
  * 예시 데이터 충분히 만들 것 (10개 이상)
+
+ * Hash 태그로 검색하는 페이지 추가
+ * 구독 페이지 추가
+ 
  * Detail 페이지 디자인                               -> 기초 디자인 완료
  * Detail 페이지에 댓글창 추가
  * Detail Podcast 전체 Rating UI 넣기
  * 시간 표기 변경하기 (패키지 찾아보자 !)
+
+ * Host 페이지 제작
+ * 첫 화면에는 Podcast List 확인
+ * Podcast 선택 시, Subscriber / Review 확인
+ * 팟캐스트 생성 페이지
+ * 팟캐스트 업데이트 페이지
 
 ---
 
