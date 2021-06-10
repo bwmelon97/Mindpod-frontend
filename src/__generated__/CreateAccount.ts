@@ -10,7 +10,7 @@ import { CreateAccountInput } from "./globalTypes";
 // ====================================================
 
 export interface CreateAccount_createAccount {
-  __typename: "CoreOutput";
+  __typename: "LoginOutput";
   ok: boolean;
   error: string | null;
 }
