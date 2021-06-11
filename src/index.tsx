@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
+import 'antd/dist/antd.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import { ApolloProvider } from '@apollo/client';
