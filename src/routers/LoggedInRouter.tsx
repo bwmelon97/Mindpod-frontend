@@ -1,9 +1,10 @@
 import React from "react";
-import { Redirect, Route, Switch } from "react-router";
+import { Route, Switch } from "react-router";
+import { useHistory } from "react-router-dom";
 import { MainPage, PodcastDetail } from "@pages/client";
 import Header from "@components/Header";
-import { useHistory } from "react-router-dom";
 import useMeQuery from "@hooks/useMeQuery";
+import HostMainPage from "@pages/host/HostMainPage";
 import { UserRole } from "@gql-types/globalTypes";
  
 
@@ -39,13 +40,14 @@ function LoggedInRouter () {
     const { me: { user } } = data;
     
     return (
-        <div className='bg-gray-100 min-h-screen' >
+        <div className='bg-white min-h-screen' >
             <Header />
             <Switch>
-                <Route path='/gate' > <LoginGate role={user?.role} /> </Route>
+                <Route exact path='/' > <LoginGate role={user?.role} /> </Route>
+                <Route path='/edit-profile'> <div className='h-screen flex items-center justify-center' >Edit Profile</div> </Route>
                 <Route path='/l/main'> <MainPage /> </Route>
                 <Route path='/l/podcast/:id'> <PodcastDetail /> </Route>
-                <Route path='/edit-profile'> <div className='h-screen flex items-center justify-center' >Edit Profile</div> </Route>
+                <Route path='/h/main'> <HostMainPage /> </Route>
                 {/* <Redirect to='/main' /> */}
             </Switch>
         </div>

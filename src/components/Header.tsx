@@ -1,20 +1,9 @@
 import React from "react";
-// import gql from "graphql-tag";
 import { authTokenVar, isLoggedInVar } from "@apollo-client";
 import { LOCALSTORAGE_TOKEN } from "@constants";
 import Logo from "@components/Logo";
 import { Dropdown, Menu } from "antd";
 import { Link } from "react-router-dom";
-
-// const ME_QUERY = gql`
-//     query meQuery {
-//         ok
-//         error
-//         user {
-//             email
-//         }
-//     }
-// `
 
 function Header () {
     const logout = () => {
@@ -29,9 +18,7 @@ function Header () {
                 <Link to='/edit-profile' >Edit Profile</Link>
             </Menu.Item>
             <Menu.Divider />
-            <Menu.Item key={2}>
-                <button onClick={logout} >Logout</button>
-            </Menu.Item>
+            <Menu.Item key={2} onClick={logout}> Logout </Menu.Item>
         </Menu>
     )
 
@@ -40,7 +27,7 @@ function Header () {
             <Logo size='sm' />
             
             <div className='flex items-center'>
-                <Dropdown overlay={menu} trigger={['click']} placement='bottomRight' arrow >
+                <Dropdown overlay={menu} trigger={['click']} placement='bottomRight' arrow className='cursor-pointer' >
                     <div className='w-6 h-6 bg-gray-200 rounded-full' >
 
                     </div>
