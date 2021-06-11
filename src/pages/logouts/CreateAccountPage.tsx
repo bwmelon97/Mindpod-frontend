@@ -43,7 +43,7 @@ function CreateAccountPage () {
             localStorage.setItem(LOCALSTORAGE_TOKEN, token)
             authTokenVar(token)
             isLoggedInVar(true)
-            history.push('/l/main')
+            history.push('/gate')
         }
     }
     const [ 

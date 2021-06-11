@@ -37,7 +37,7 @@ function LoginPage () {
             localStorage.setItem(LOCALSTORAGE_TOKEN, token)
             authTokenVar(token)
             isLoggedInVar(true)
-            history.push('/main')
+            history.push('/gate')
         }
     }
     const [
