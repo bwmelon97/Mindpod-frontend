@@ -30,7 +30,7 @@ const Logo: React.FC<LogoProps> = ({ size }) => {
     
     return (
         <div className='flex items-center'>
-            <img src={LOGO_IMG_URL} className={logoStyle.imgWidth} />
+            <img src={LOGO_IMG_URL} className={logoStyle.imgWidth} alt='logo' />
             <span className={`font-extrabold tracking-tighter select-none ${logoStyle.textSize}`} > Mindpod </span>
         </div>
     )

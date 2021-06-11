@@ -40,7 +40,7 @@ type Param = {
 
 function PodcastDetailPage () {
     const { id } = useParams<Param>()
-    const { loading, data, error } = useQuery<
+    const { loading, data } = useQuery<
         GetPodcastDetail, 
         GetPodcastDetailVariables
     >(GET_PODCAST_DETAIL, { variables: { id: +id } }) 
