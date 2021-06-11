@@ -4,7 +4,7 @@ module.exports = {
         name: 'github',
         url: 'https://mindpod-backend.herokuapp.com/graphql',
       },
-      includes: ['./src/**/*.tsx'],
+      includes: ['./src/**/*.tsx', './src/**/*.ts'],
       tagName: "gql",
     }
   };
